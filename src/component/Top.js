@@ -15,7 +15,7 @@ export default function TOP() {
             height={500}
           />
         </div>
-        <Header as="h1">코딩앙마</Header>
+        <Header as="h1">프론트몽키</Header>
       </div>
       <Gnb />
     </div>
