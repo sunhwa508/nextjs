@@ -1,13 +1,15 @@
 import Head from "next/head";
 import axios from "axios";
 import Item from "../../src/component/Item";
-export default function Post({ item }) {
+
+export default function Post({ item, name }) {
   return (
     <>
       <Head>
         <title>{item.name}</title>
         <meta name="description" content={item.description}></meta>
       </Head>
+      {name} 환경입니다.
       {item && <Item item={item} />}
     </>
   );
@@ -22,6 +24,7 @@ export async function getServerSideProps(context) {
   return {
     props: {
       item: data,
+      name: process.env.name,
     },
   };
 }
