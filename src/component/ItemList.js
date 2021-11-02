@@ -6,7 +6,6 @@ export default function ItemList({ list }) {
     return `https://example.com/${src}?w=${width}&q=${quality || 75}`;
   };
 
-  console.log("list", list);
   return (
     <>
       <div className="ui grid">

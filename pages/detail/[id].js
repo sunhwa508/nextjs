@@ -1,8 +1,21 @@
 import axios from "axios";
 import Head from "next/head";
 import Item from "../../src/component/Item";
+import { useRouter } from "next/router";
 
 const Post = ({ item, name }) => {
+  const router = useRouter();
+  if (router.isFallback) {
+    return (
+      <div style={{ padding: "300px 0" }} className="ui segment">
+        <div className="ui active inverted dimmer">
+          <div className="ui text loader">Loading</div>
+        </div>
+        <p></p>
+      </div>
+    );
+  }
+
   return (
     <>
       {item && (
@@ -22,13 +35,15 @@ const Post = ({ item, name }) => {
 export default Post;
 
 export async function getStaticPaths() {
+  const apiUrl = process.env.apiUrl;
+  const res = await axios.get(apiUrl);
+  const data = res.data;
   return {
-    paths: [
-      { params: { id: "740" } },
-      { params: { id: "730" } },
-      { params: { id: "729" } },
-    ],
-    // false 설정시 대응되지 않는 페이지는 모두 404Error 처리
+    paths: data.slice(0, 9).map((item) => ({
+      params: {
+        id: item.id + "",
+      },
+    })),
     fallback: true,
   };
 }
