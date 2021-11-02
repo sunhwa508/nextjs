@@ -12,7 +12,7 @@ export default function ItemList({ list }) {
       <div className="ui grid">
         {list.map((item) => {
           return (
-            <Link key={item.id} href={`/view/${item.id}`}>
+            <Link key={item.id} href={`/detail/${item.id}`}>
               <a>
                 <div className="four wide column">
                   <div className="ui card">
