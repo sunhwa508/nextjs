@@ -8,10 +8,8 @@ export default function Login() {
     e.preventDefault();
     axios.post("/api/login").then((res) => {
       if (res.status === 200) {
-        //로그인성공
         router.push("/admin");
       }
-      console.log("Res", res.status);
     });
   }
   return (
