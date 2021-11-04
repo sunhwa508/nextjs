@@ -21,6 +21,15 @@ export default function Gnb() {
             About
           </a>
         </Link>
+        <Link href="/admin">
+          <a
+            className={`${
+              router.pathname === "/admin" ? "active item" : "item"
+            }`}
+          >
+            Admin
+          </a>
+        </Link>
       </div>
     </div>
   );
